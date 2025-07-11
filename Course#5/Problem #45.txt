@@ -1,0 +1,91 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+    short Number = 0;
+    do
+    {
+
+        cout << Message;
+        cin >> Number;
+
+    } while (Number < 0);
+    return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+    return (rand() % (To - From + 1) + From);
+}
+
+void FillArrayRandomly(int Arr[100], int Length)
+{
+
+    for (int Counter = 0; Counter < Length; Counter++)
+    {
+        Arr[Counter] = RandomNumber(-100, 100);
+
+    }
+
+}
+
+
+void PrintArray(int Arr[100], int Length, string Message)
+{
+    cout << Message;
+    for (int Counter = 0; Counter < Length; Counter++)
+    {
+
+        cout << Arr[Counter] << " ";
+
+
+    }
+    cout << endl;
+
+
+}
+
+bool IsNegativeNumber(int Number)
+{
+    return (Number <  0);
+
+}
+
+int CountOffNegativeNumbers(int Arr[202], int Length)
+{
+    int Counter = 0;
+    for (int i = 0; i < Length; i++)
+    {
+        if (IsNegativeNumber(Arr[i]))
+            Counter++;
+
+    }
+
+    return Counter++;
+}
+
+
+
+
+int main()
+{
+    srand((unsigned)time(NULL));
+
+    int Arr[100];
+    int Length = 0;
+    Length = ReadPositiveNumber("Enter Number : ");
+    FillArrayRandomly(Arr, Length);
+    PrintArray(Arr, Length, "Array ELements : ");
+    cout << "Counter OF Negative Number : " << CountOffNegativeNumbers(Arr, Length);
+
+    
+
+
+
+
+
+}
+
+

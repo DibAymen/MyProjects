@@ -1,0 +1,120 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+enum enCharType { SamallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+
+int ReadPositiveNumber(string Message)
+{
+	int Number=0;
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number < 1);
+	return Number;
+
+}
+
+int RandomNumber(int From,int To)
+{
+	return (rand() % (To - From + 1) + From);
+}
+
+char GetRandomCharacter(enCharType CharType)
+{
+    switch (CharType)
+    {
+    case enCharType::SamallLetter:
+    {
+        return char(RandomNumber(97, 122));
+        break; 
+    }
+    case enCharType::CapitalLetter:
+    {
+        return char(RandomNumber(65, 90));
+        break;
+    }
+    case enCharType::SpecialCharacter:
+    {
+        return char(RandomNumber(33, 47));
+        break;
+    }
+    case enCharType::Digit:
+    {
+        return char(RandomNumber(48, 57));
+        break;
+    }
+    }
+    return '\0';
+}
+
+string GenerateWord(enCharType CharType, short Length)
+{
+    string Word;  
+
+    for (int i = 1; i <= Length; i++)
+    {
+        Word = Word + GetRandomCharacter(CharType);
+    }
+    return Word;
+}
+
+string GenerateKey()
+{
+    string Key = "";  
+
+    Key = GenerateWord(enCharType::CapitalLetter, 4) + "-";
+    Key = Key + GenerateWord(enCharType::CapitalLetter, 4) + "-";
+    Key = Key + GenerateWord(enCharType::CapitalLetter, 4) + "-";
+    Key = Key + GenerateWord(enCharType::CapitalLetter, 4);
+
+    return Key;
+}
+
+void FillArraywithKeys(int Length,string Arr[100])
+{
+    for (int Counter = 0; Counter < Length; Counter++)
+    {
+
+        Arr[Counter] = GenerateKey();
+        
+
+                    
+    }
+
+
+
+}
+
+void PrintArray(string Arr[100], int Length,string Message)
+{
+	cout << Message;
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		cout << "[" << Counter << "] : " << Arr[Counter]<<endl;
+
+
+	}
+
+
+
+}
+
+
+int main()
+{
+	 srand((unsigned)time(NULL));
+
+     string Arr[100];
+     int Length;
+      Length = ReadPositiveNumber("How Many Elements Do You want : ");
+      FillArraywithKeys(Length, Arr);
+	PrintArray(Arr, Length,"Array Elements : \n");
+
+    
+}
+
+

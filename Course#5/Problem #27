@@ -1,0 +1,141 @@
+#include<iostream>
+#include<cstdlib>
+#include<time.h>
+using namespace std;
+
+int EnterPositiveNumber(string Message)
+{
+	int Number = 0;
+	do {
+		cout << Message;
+		cin >> Number;
+
+
+
+	} while (Number < 1);
+
+	return Number;
+
+
+}
+
+
+void ReadArray(int& Length, int Array[100], string Message)
+{
+	cout << Message;
+	cin >> Length;
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		cout << "ELement[" << Counter + 1 << "] : ", cin >> Array[Counter];
+
+
+
+	}
+
+
+
+
+}
+
+
+int GenerateRandomNumbers(int From, int To)
+{
+
+
+	return rand() % (To - From + 1) + From;
+
+
+
+
+
+
+}
+
+void PrintArray(int Length, int Array[100], string Message)
+{
+
+	cout << Message;
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		cout << Array[Counter] << " ";
+
+
+
+	}
+
+
+
+	cout << endl << endl;
+}
+
+void FillArrayWithRandomNumbers(int Length, int Array[100])
+{
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		Array[Counter] = (GenerateRandomNumbers(0, 100));
+
+
+
+	}
+
+
+
+
+
+
+}
+
+int Sum_RandomArrays(int Length, int Array[100])
+{
+	float Sum = 0;
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		Sum = Sum + Array[Counter];
+
+
+
+
+
+
+	}
+	return Sum;
+
+
+
+
+
+
+
+}
+float AverageRandomArrays(int Length, int Sum)
+{
+
+
+	return Sum / Length;
+
+
+
+
+
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int Array[100], Length = 0;
+	Length = EnterPositiveNumber("Enter Number : ");
+	FillArrayWithRandomNumbers(Length, Array);
+	PrintArray(Length, Array, "Array Elements : ");
+	int Sum= Sum_RandomArrays(Length, Array);
+	cout<<"Average OF all Nubmers : "<<AverageRandomArrays(Length, Sum);
+
+
+
+}

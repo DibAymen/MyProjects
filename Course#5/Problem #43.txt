@@ -1,0 +1,149 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+    short Number = 0;
+    do
+    {
+
+        cout << Message;
+        cin >> Number;
+
+    } while (Number < 0);
+    return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+    return (rand() % (To - From + 1) + From);
+}
+
+void FillArrayRandomly(int Arr[100], int Length)
+{
+
+    for (int Counter = 0; Counter < Length; Counter++)
+    {
+        Arr[Counter] = RandomNumber(1, 100);
+
+    }
+
+}
+
+void FillArray(int arr[100], int& arrLength)
+{
+    arrLength = 6; // Set the array length to 10 elements.
+
+    // Manually assign values to the array elements.
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+    arr[3] = 3;
+    arr[4] = 20;
+    arr[5] = 10;
+
+}
+
+void PrintArray(int Arr[100], int Length, string Message)
+{
+    cout << Message;
+    for (int Counter = 0; Counter < Length; Counter++)
+    {
+
+        cout << Arr[Counter] << " ";
+
+
+    }
+    cout << endl;
+
+
+}
+
+bool IsEvenNumber(int Number)
+{
+    return (Number % 2 == 0);
+
+}
+
+void AddArrayElements(int Arr[100], int& Length, int Number)
+{
+    Length++;
+    Arr[Length - 1] = Number;
+
+}
+
+short FindNumberPositionInArray(int Number, int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+    {
+        if (arr[i] == Number)
+            return i;  // Return the index as soon as the number is found.
+    }
+    // If the number is not found, return -1.
+    return -1;
+}
+
+void CopyArray(int Arr1[100], int Length1, int Arr2[100], int& Length2)
+{
+    for (int Counter = 0; Counter < Length1; Counter++)
+    {
+        AddArrayElements(Arr2, Length2, Arr1[Counter]);
+
+    }
+
+
+
+}
+
+void FillArrayWithEvenNumbers(int SourceArr[100], int DestinationArr[100], int SourceLength, int& DestinationLength)
+{
+    for (int i = 0; i < SourceLength; i++)
+    {
+        if (IsEvenNumber(SourceArr[i]) == true)
+        {
+
+            AddArrayElements(DestinationArr, DestinationLength, SourceArr[i]);
+        }
+
+
+    }
+
+}
+
+int CounteOfEvenNubmers(int Arr[100], int Length)
+{
+    int Counter = 0;
+    for (int i = 0; i < Length; i++)
+    {
+        if (IsEvenNumber(Arr[i]));
+
+        Counter++;
+    }
+
+    return Counter;
+}
+
+int main()
+{
+    srand((unsigned)time(NULL));
+
+    int Arr1[100];
+    int Arr2[100];
+    int Length1 = 0;
+    int Length2 = 0;
+    Length1 = ReadPositiveNumber("Enter Number : ");
+    FillArrayRandomly(Arr1, Length1);
+    FillArrayWithEvenNumbers(Arr1, Arr2, Length1, Length2);
+    PrintArray(Arr1, Length1, "Array Elementes : ");
+    PrintArray(Arr2, Length2, "Array Elementes : ");
+    cout << "Even Numbers Count is : " << CounteOfEvenNubmers(Arr2, Length2);
+
+
+
+
+
+
+}
+
+
