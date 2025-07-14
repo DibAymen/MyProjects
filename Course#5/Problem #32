@@ -1,0 +1,121 @@
+#include<iostream>
+#include<cstdlib>
+#include<time.h>
+using namespace std;
+
+
+int EnterPositiveNumber(string Message)
+{
+	int Number = 0;
+	do {
+		cout << Message;
+		cin >> Number;
+
+
+
+	} while (Number < 1);
+
+	return Number;
+
+
+}
+
+int GenerateRandomNumbers(int From, int To)
+{
+
+
+	return rand() % (To - From + 1) + From;
+
+
+
+
+
+
+
+}
+
+void FillArayToN(int Array[100], int Number)
+{
+	int ArrayElements = 1;
+	for (int Counter = 0; Counter < Number; Counter++)
+	{
+		Array[Counter] = ArrayElements;
+
+		ArrayElements++;
+
+	}
+
+
+
+}
+
+void PrintArray(int Length, int Array[100], string Message)
+{
+
+	cout << Message;
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		cout << Array[Counter] << " ";
+
+
+
+	}
+
+
+
+	cout << endl << endl;
+}
+
+void FillArrayWithRandomNumbers(int Length, int Array[100])
+{
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		Array[Counter] = (GenerateRandomNumbers(0, 100));
+
+
+
+	}
+
+
+
+}
+
+
+void ReversArray(int Array[100],int ReversArray1[100], int Length)
+{
+	for (int Counter = 0; Counter < Length; Counter++)
+
+		ReversArray1[Counter] = Array[Length - 1 - Counter];
+
+
+
+
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int Array1[100], Array2[100], Length = 0;
+
+	Length = EnterPositiveNumber("Enter Number : ");
+
+
+	FillArayToN(Array1, Length);
+
+	PrintArray(Length, Array1, "Array ELements Before Shuffle : ");
+
+	ReversArray(Array1,Array2, Length);
+
+	PrintArray(Length, Array2, "Array ELements After Revers : ");
+
+
+
+
+
+}

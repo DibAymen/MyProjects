@@ -1,0 +1,125 @@
+#include<iostream>
+#include<cstdlib>
+#include<time.h>
+using namespace std;
+
+int EnterPositiveNumber(string Message)
+{
+	int Number = 0;
+	do {
+		cout << Message;
+		cin >> Number;
+
+
+
+	} while (Number < 1);
+
+	return Number;
+
+
+}
+
+
+void ReadArray(int& Length, int Array[100], string Message)
+{
+	cout << Message;
+	cin >> Length;
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		cout << "ELement[" << Counter + 1 << "] : ", cin >> Array[Counter];
+
+
+
+	}
+
+
+
+
+}
+
+
+int GenerateRandomNumbers(int From, int To)
+{
+
+
+	return rand() % (To - From + 1) + From;
+
+
+
+
+
+
+}
+
+void PrintArray(int Length, int Array[100], string Message)
+{
+
+	cout << Message;
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		cout << Array[Counter] << " ";
+
+
+
+	}
+
+
+
+	cout << endl << endl;
+}
+
+void FillArrayWithRandomNumbers(int Length, int Array[100])
+{
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+		Array[Counter] = (GenerateRandomNumbers(0, 100));
+
+
+
+	}
+
+
+
+
+
+
+}
+
+void CopyyArray(int Length,int Array1[100],int Array2[100])
+{
+
+	for (int Counter = 0; Counter < Length; Counter++)
+	{
+
+
+		Array2[Counter] = Array1[Counter];
+
+
+	}
+
+
+
+
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int Array1[100],Array2[100], Length = 0;
+	Length = EnterPositiveNumber("Enter Number : ");
+	FillArrayWithRandomNumbers(Length, Array1);
+
+	PrintArray(Length, Array1, "Array1  Elements : ");
+
+	CopyyArray(Length, Array1, Array2);
+
+	PrintArray(Length, Array2, "Array2  Elements : ");
+
+
+
+}
